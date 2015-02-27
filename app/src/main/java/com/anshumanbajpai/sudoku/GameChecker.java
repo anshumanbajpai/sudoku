@@ -4,20 +4,18 @@ import java.util.List;
 
 public class GameChecker
 {
-    public static final int BOARD_SIZE = 9;
-
-    public static boolean isValidSolution(List<List<Integer>> board)
+    public static boolean isValidSolution(int[][] board)
     {
-        for (int i = 0; i < BOARD_SIZE; i++)
+        for (int i = 0; i < Config.BOARD_SIZE; i++)
         {
-            boolean[] marker = new boolean[BOARD_SIZE];
+            boolean[] marker = new boolean[Config.BOARD_SIZE];
 
-            for (int j = 0; j < BOARD_SIZE; j++)
+            for (int j = 0; j < Config.BOARD_SIZE; j++)
             {
-                marker[board.get(i).get(j) - 1] = true;
+                marker[board[i][j] - 1] = true;
             }
 
-            for (int k = 0; k < BOARD_SIZE; k++)
+            for (int k = 0; k < Config.BOARD_SIZE; k++)
             {
                 if (!marker[k])
                 {
@@ -26,16 +24,16 @@ public class GameChecker
             }
         }
 
-        for (int j = 0; j < BOARD_SIZE; j++)
+        for (int j = 0; j < Config.BOARD_SIZE; j++)
         {
-            boolean[] marker = new boolean[BOARD_SIZE];
+            boolean[] marker = new boolean[Config.BOARD_SIZE];
 
-            for (int i = 0; i < BOARD_SIZE; i++)
+            for (int i = 0; i < Config.BOARD_SIZE; i++)
             {
-                marker[board.get(i).get(j) - 1] = true;
+                marker[board[i][j] - 1] = true;
             }
 
-            for (int k = 0; k < BOARD_SIZE; k++)
+            for (int k = 0; k < Config.BOARD_SIZE; k++)
             {
                 if (!marker[k])
                 {
@@ -44,9 +42,9 @@ public class GameChecker
             }
         }
 
-        for (int i = 0; i <= BOARD_SIZE - 3; i = i + 3)
+        for (int i = 0; i <= Config.BOARD_SIZE - 3; i = i + 3)
         {
-            for (int j = 0; j <= BOARD_SIZE - 3; j = j + 3)
+            for (int j = 0; j <= Config.BOARD_SIZE - 3; j = j + 3)
             {
                 if (!isValidBlock(i, j, board))
                 {
@@ -59,19 +57,19 @@ public class GameChecker
     }
 
     //x & y are top left coordinates of sub matrices
-    private static boolean isValidBlock(int x, int y, List<List<Integer>> board)
+    private static boolean isValidBlock(int x, int y, int[][] board)
     {
-        boolean[] marker = new boolean[BOARD_SIZE];
+        boolean[] marker = new boolean[Config.BOARD_SIZE];
 
         for (int i = x; i < x + 3; i++)
         {
             for (int j = y; j < y + 3; j++)
             {
-                marker[board.get(i).get(j) - 1] = true;
+                marker[board[i][j] - 1] = true;
             }
         }
 
-        for (int i = 0; i < BOARD_SIZE; i++)
+        for (int i = 0; i < Config.BOARD_SIZE; i++)
         {
             if (!marker[i])
             {

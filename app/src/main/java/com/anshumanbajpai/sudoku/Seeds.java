@@ -1,11 +1,5 @@
 package com.anshumanbajpai.sudoku;
 
-import com.google.common.primitives.Ints;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Seeds
 {
     private static final int[][][] SEEDS = new int[][][]{
@@ -34,22 +28,8 @@ public class Seeds
             }
     };
 
-    public static List<List<List<Integer>>> getSeeds()
+    public static int[][][] getSeeds()
     {
-        List<List<List<Integer>>> seedsList = new ArrayList<>(SEEDS.length);
-
-        for (int i = 0; i < SEEDS.length; i++)
-        {
-            List<List<Integer>> seed = new ArrayList<>();
-
-            for (int j = 0; j < SEEDS[i][0].length; j++)
-            {
-                seed.add(Collections.unmodifiableList(Ints.asList(SEEDS[i][j])));
-            }
-
-            seedsList.add(seed);
-        }
-
-        return seedsList;
+        return SEEDS.clone();
     }
 }
